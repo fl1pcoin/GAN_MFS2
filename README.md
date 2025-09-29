@@ -9,7 +9,7 @@
 
 ## Overview
 
-This project generates high-quality synthetic tabular data while preserving the statistical and structural properties of the original dataset. It enables reliable data augmentation for machine learning applications, offering a valuable tool for privacy-preserving data sharing and enhancing model training when real data is limited.
+GAN_MFS2 enables the creation of high-quality synthetic tabular data that closely resembles real-world datasets. It supports privacy-preserving data sharing, enhances machine learning workflows through reliable data augmentation, and ensures trustworthy results for analytics and modeling tasks.
 
 ---
 
@@ -26,15 +26,12 @@ This project generates high-quality synthetic tabular data while preserving the 
 ---
 ## Core features
 
-1. **WGAN-GP Implementation**: Implements Wasserstein GAN with Gradient Penalty (WGAN-GP) for stable training by using the Wasserstein distance and enforcing Lipschitz continuity via gradient penalty, leading to more reliable and consistent synthetic data generation.
+1. **WGAN-GP Implementation**: Implements Wasserstein GAN with Gradient Penalty (WGAN-GP) to ensure stable training by using the Wasserstein distance and enforcing Lipschitz continuity via gradient penalty, leading to more reliable and consistent synthetic data generation.
 2. **Meta-Feature Statistics (MFS) Preservation**: Enhances the GAN by preserving statistical properties of the original data through Meta-Feature Statistics (MFS), including mean, variance, correlation, covariance, eigenvalues, and higher-order moments, ensuring high fidelity in synthetic tabular data.
 3. **PyTorch-Based MFS Computation**: Provides a fully differentiable, PyTorch-native implementation of meta-feature extraction (via MFEToTorch), enabling end-to-end gradient-based optimization and integration with the GAN training loop for real-time MFS alignment.
 4. **Wasserstein Distance for MFS Alignment**: Uses optimal transport (Wasserstein distance) to measure and minimize the discrepancy between real and synthetic data's meta-feature distributions, improving the statistical similarity and utility of generated samples.
-5. **Flexible Generator and Discriminator Architectures**: Supports configurable neural network architectures for both generator and discriminator using residual blocks and customizable layer dimensions, allowing adaptation to various data complexities and modeling needs.
-6. **Comprehensive Evaluation Metrics**: Includes a suite of utility and fidelity metrics such as R², RMSE, MAPE, Jensen-Shannon divergence, correlation matrix distance, and topological data analysis to rigorously assess synthetic data quality.
-7. **Experiment Tracking with Aim**: Integrates Aim for real-time experiment tracking, logging training losses, gradients, generated samples, and evaluation metrics, enabling reproducibility and performance analysis across training runs.
-8. **Residual Network Generator**: Employs a residual connection-based generator architecture that concatenates inputs across layers, facilitating deeper networks and improved gradient flow during training for more effective synthetic data generation.
-9. **Configurable Training Pipeline**: Offers a modular and configurable training setup through hyperparameters such as learning rates, batch size, epochs, gradient penalty weight, and MFS loss weighting, enabling fine-tuned control over the training process.
+5. **Comprehensive Evaluation Metrics**: Includes a suite of utility and fidelity metrics such as R², RMSE, MAPE, Jensen-Shannon divergence, correlation matrix distance, and topological data analysis to rigorously assess synthetic data quality.
+6. **Residual Network Generator**: Employs a residual connection-based generator architecture that concatenates inputs across layers, facilitating deeper networks and improved gradient flow during training for more effective synthetic data generation.
 
 ---
 
@@ -53,17 +50,11 @@ git clone https://github.com/fl1pcoin/GAN_MFS2
 ```sh
 cd GAN_MFS2
 ```
-
-### 1. Install Dependencies
-
-```bash
-pip install -r req.txt
-```
 ## Getting Started
 
 To get started with GAN_MFS2, follow these steps to train a WGAN-GP model enhanced with Meta-Feature Statistics (MFS) on your tabular dataset.
 
-### 2. Prepare Your Data
+### 1. Prepare Your Data
 
 Ensure your data is in a tabular format (e.g., CSV) with a target column. Example:
 
@@ -82,7 +73,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 training_data = np.hstack([X_train, y_train.reshape(-1, 1)])
 ```
 
-### 3. Configure and Train the Model
+### 2. Configure and Train the Model
 
 Use `TrainerModified` for MFS-enhanced training:
 
@@ -114,7 +105,7 @@ trainer = TrainerModified(
 trainer.train(data_loader, epochs=1000, plot_freq=100)
 ```
 
-### 4. Monitor Training with Aim
+### 3. Monitor Training with Aim
 
 The project supports experiment tracking via Aim. To enable:
 
@@ -124,7 +115,7 @@ tracker = aim.Run(experiment="WGAN-GP")
 tracker["hparams"] = learning_params
 ```
 
-### 5. Evaluate Synthetic Data
+### 4. Evaluate Synthetic Data
 
 After training, evaluate the synthetic data using built-in metrics:
 
