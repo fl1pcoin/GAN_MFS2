@@ -28,7 +28,7 @@ except ImportError:
 
     warnings.warn("statsmodels module required to plot QQ plots.")
 
-from wgan_gp.pymfe_to_torch import MFEToTorch
+from Wasserstein_Generative_Adversarial_Network_with_Gradient_Penalty_and_save_every_word_here..Convert_pymfe_to_torch_and_save_every_word_here. import MFEToTorch
 from sklearn.decomposition import PCA
 
 
@@ -619,7 +619,7 @@ class TrainerModified(Trainer):
 
         # print_debug = [[i, j.cpu().detach()] for i, j in zip(self.subset_mfs, wsds)]
         # print(*print_debug,
-        #       sep='\n')
+        #       sep='/n')
         if average:
             return sum(wsds) / n_features
         else:
@@ -732,8 +732,7 @@ class TrainerModified(Trainer):
         """
         Plots a quantile-quantile (QQ) plot to compare MFS distributions.
 
-        This method generates a QQ plot to visually assess how well the generated MFS from
-        a batch matches the distribution of the target MFS. It also plots a histogram of the
+        This method generates a QQ plot to visually assess how well the generated MFS from a batch matches the distribution of the target MFS. It also plots a histogram of the
         target MFS to visualize its distribution. The QQ plot helps determine if the GAN is
         effectively learning to reproduce the statistical properties of the real data.
 
