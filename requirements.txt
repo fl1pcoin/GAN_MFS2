@@ -1,0 +1,15 @@
+aim==3.29.1
+matplotlib==3.10.8
+numpy==2.4.1
+pandas==3.0.0
+persim==0.3.8
+pymfe==0.4.4
+ripser==0.6.14
+scikit_learn==1.8.0
+scipy==1.17.0
+statsmodels==0.14.6
+torch==2.10.0
+torch_topological==0.1.9
+torchviz==0.0.3
+tqdm==4.67.1
+xgboost==3.1.3
